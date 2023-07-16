@@ -10,7 +10,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         name: 'FIBONACCI_SERVICE',
         transport: Transport.RMQ,
         options: {
-          urls: ['amqp://localhost'],
+          urls: ['amqp://rabbitmq'],
           queue: 'fibonacci_queue',
           noAck: false,
           queueOptions: {

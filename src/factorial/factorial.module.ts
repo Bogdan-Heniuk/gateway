@@ -10,7 +10,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         name: 'FACTORIAL_SERVICE',
         transport: Transport.RMQ,
         options: {
-          urls: ['amqp://localhost'],
+          urls: ['amqp://rabbitmq'],
           queue: 'factorial_queue',
           noAck: false,
           queueOptions: {
