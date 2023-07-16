@@ -9,7 +9,7 @@ import { ConfigModule } from '@nestjs/config';
     FactorialModule,
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env.development',
+      envFilePath: `.env.${process.env.NODE_ENV}`,
     }),
   ],
   controllers: [],
