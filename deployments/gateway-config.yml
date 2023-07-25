@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: gateway
+  template:
+    metadata:
+      labels:
+        component: gateway
+    spec:
+      containers:
+        - name: gateway
+          image: makarovvv/gateway
+          ports:
+            - containerPort: 3000
+          env:
+            - name: RMQ_URL
+              value: amqp://rabbitmq-cluster-ip-service
+            - name: RMQ_FIBONACCI_QUEUE
+              value: fibonacci_queue
+            - name: RMQ_FACTORIAL_QUEUE
+              value: factorial_queue
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    component: gateway
+  ports:
+    - port: 3000
+      targetPort: 3000

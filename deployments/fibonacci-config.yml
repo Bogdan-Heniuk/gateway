@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fibonacci
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: fibonacci
+  template:
+    metadata:
+      labels:
+        component: fibonacci
+    spec:
+      containers:
+        - name: fibonacci
+          image: makarovvv/fibonacci
+          ports:
+            - containerPort: 6000
+          env:
+            - name: RMQ_URL
+              value: amqp://rabbitmq-cluster-ip-service
+            - name: RMQ_FIBONACCI_QUEUE
+              value: fibonacci_queue
+            - name: RMQ_FACTORIAL_QUEUE
+              value: factorial_queue
