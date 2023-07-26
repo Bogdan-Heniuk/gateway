@@ -8,7 +8,7 @@ import { ApiParam, ApiProperty, ApiTags } from '@nestjs/swagger';
 export class FibonacciController {
   constructor(private readonly fibonacciService: FibonacciService) {}
 
-  @ApiParam({ name: 'index updated', type: Number })
+  @ApiParam({ name: 'index', type: Number })
   @Get('/:index')
   calcFibonacci(@Param() params: any): Observable<number> {
     const { index } = params;

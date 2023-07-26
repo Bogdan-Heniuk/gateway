@@ -8,7 +8,7 @@ import { ApiTags, ApiParam } from '@nestjs/swagger';
 export class FactorialController {
   constructor(private readonly factorialService: FactorialService) {}
 
-  @ApiParam({ name: 'number updated', type: Number })
+  @ApiParam({ name: 'number', type: Number })
   @Get('/:number')
   getHello(@Param() params): Observable<number> {
     const { number } = params;
