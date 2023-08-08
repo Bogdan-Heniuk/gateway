@@ -37,7 +37,7 @@ jobs:
         uses: google-github-actions/get-gke-credentials@v0
         with:
           cluster_name: k8s
-          location: us-central1-a
+          location: us-central1
 
       - name: Build
         run: |-
