@@ -15,7 +15,6 @@ spec:
       containers:
         - name: gateway
           image: makarovvv/gateway
-          imagePullPolicy: Never
           ports:
             - containerPort: 3000
           env:
