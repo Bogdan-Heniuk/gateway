@@ -51,6 +51,6 @@ jobs:
 
       - name: Apply
         run: |-
-          kubectl apply -f deployments
+          kubectl apply -f gateway-config.yml
           kubectl set image deployments/gateway-deployment gateway=makarovvv/gateway:${{ env.SHA }}
 
